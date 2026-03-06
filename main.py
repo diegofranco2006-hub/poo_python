@@ -1,34 +1,49 @@
-# Definición de la clase Persona
+# Clase Persona
 class Persona:
-    # Atributos de clase (no son necesarios en este caso,
-    # porque luego se definen como atributos de instancia en __init__)
     nombre=""
-    edad=20
+    edad=0
     altura=0
     genero=""
 
-    # Método constructor: se ejecuta automáticamente
-    # cuando se crea un nuevo objeto de la clase Persona
-    def __init__(self, nombre,edad,altura,genero):
-        # Atributos de instancia (propios de cada objeto)
-        self.nombre=nombre
-        self.edad=edad
-        self.altura=altura
-        self.genero=genero
+    def __init__(self, atr_nombre,atr_edad,atr_altura,atr_genero):
+        self.nombre = atr_nombre
+        self.edad=atr_edad
+        self.altura=atr_altura
+        self.genero=atr_genero
 
-    # Método que devuelve un mensaje con los datos de la persona
     def caminar(self):
-        return f"Hola soy {self.nombre} Estoy Caminado tengo mi edad {self.edad} mi altura es: {self.altura} y mi genero es: {self.genero}"
+        return f'Hola soy {self.nombre} Me encuentro Caminado'
+    
+    def __str__(self):
+        return f'Hola soy {self.nombre} tengo la edad de {self.edad} y mido {self.altura} mi genero es: {self.genero}'
+ # Persona -> Objeto   Persona-> Clase
 
-# Creación de un objeto (instancia) de la clase Persona
-persona1= Persona("Danilo",40,1.79,"Masculino")
+personas_encuestadas=[]
+op=""
+while True:
+    op=int(input("""Escoge la opción
+                  1. Ingresar Datos
+                  2. Ver el listado
+                  0. Salir
+                  """))
 
 
-# Imprime los atributos del objeto persona1
-print(persona1.nombre)
-print(persona1.edad)
-print(persona1.altura)
-print(persona1.genero)
+    if op == 0:
+        break
 
+    if op == 1:
+        nombre = input("Ingrese el nombre: ")
+        edad = int(input("Ingrese Edad: "))
+        altura=float(input("Ingrese la Altura :"))
+        genero=input("Ingresar el Gerero: ")
 
-print(persona1.caminar())
+        persona=Persona(nombre,edad,altura,genero)
+
+        personas_encuestadas.append(persona)
+
+        
+    if op == 2:
+        for persona in personas_encuestadas:
+            print(persona)
+        
+
